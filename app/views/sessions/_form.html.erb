@@ -1,0 +1,11 @@
+<%= form_with(model: user, local: true, url: entrar_path, method: 'post',class: 'form-signin mt-5') do |f|%>
+   
+    <h1 class="h3 font-weight-normal">Entrar</h1>
+    <%= f.label :email, class: 'sr-only'%>
+    <%= f.text_field :email, class: 'form-control', placeholder: 'E-mail'%>
+
+    <%= f.label :password, class: 'sr-only'%>
+    <%= f.password_field :password, class: 'form-control', placeholder: 'Senha'%>
+
+    <%= f.submit 'Login', class:'btn btn-lg btn-primary btn-block'%>
+<% end %>
