@@ -1,6 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <%= link_to 'Lista de Contatos', root_path, class:'navbar-brand'%>
-  <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation"></button>
+  <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
   <div class="collapse navbar-collapse" id="collapsibleNavId">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <% if !user_signed_in?%>
@@ -15,11 +17,18 @@
           <%= link_to 'Login', entrar_path, class: 'nav-link'%>
         </li>
       <% else %>
-        <li class="nav-item">
-          <%= link_to current_user.name, '#', class: 'nav-link'%>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'Sair', sair_path, method: :delete, class: 'nav-link'%>
+        <!-- Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+            Bem vindo,
+            <%= current_user.name %>
+          </a>
+          <div class="dropdown-menu">
+            <%= link_to 'Minha Página', contacts_path, class:'dropdown-item' %>
+            <%= link_to 'Editar', '#', class:'dropdown-item' %>
+            <div class="dropdown-divider"></div>
+            <%= link_to 'Sair', sair_path, class:'dropdown-item', method: :delete %>
+          </div>
         </li>
       <% end %>
     </ul>
