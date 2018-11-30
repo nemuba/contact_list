@@ -1,6 +1,14 @@
-<h1>Editing Contact</h1>
+<div class="contatiner">
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <h1 class="mt-2 pb-2">Editar Contato</h1>
 
-<%= render 'form', contact: @contact %>
+      <%= render 'form', contact: @contact %>
 
-<%= link_to 'Show', @contact %> |
-<%= link_to 'Back', contacts_path %>
+      <%= link_to 'Show', @contact, class:'btn btn-outline-info btn-sm' %>
+      |
+      <%= link_to 'Voltar', contacts_path, class:'btn btn-outline-danger btn-sm' %>
+
+    </div>
+  </div>
+</div>
