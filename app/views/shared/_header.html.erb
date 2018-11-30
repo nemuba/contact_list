@@ -25,7 +25,7 @@
           </a>
           <div class="dropdown-menu">
             <%= link_to 'Minha Página', contacts_path, class:'dropdown-item' %>
-            <%= link_to 'Editar', '#', class:'dropdown-item' %>
+            <%= link_to 'Editar', edit_user_path(current_user), class:'dropdown-item' %>
             <div class="dropdown-divider"></div>
             <%= link_to 'Sair', sair_path, class:'dropdown-item', method: :delete %>
           </div>

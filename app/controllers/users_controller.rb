@@ -1,7 +1,12 @@
 class UsersController < ApplicationController
+  before_action :require_logged_in_user, only: %i[edit update]
+  before_action :set_user, only: %i[edit update]
+
   def new
     @user = User.new
   end
+
+  def edit; end
 
   def create
     @user = User.new(params_user)
@@ -14,6 +19,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def update
+    if @user.update(params_user)
+      flash[:notice] = 'Usuário atualizado com sucesso !'
+      redirect_to contacts_path
+    else
+      flash[:danger] = 'Erro ao atualizar usuário !'
+      render :edit
+    end
+  end
+
   private
 
   def params_user
@@ -21,6 +36,6 @@ class UsersController < ApplicationController
   end
 
   def set_user
-    @user = Contact.find(params[:id])
+    @user = User.find(params[:id])
   end
 end
